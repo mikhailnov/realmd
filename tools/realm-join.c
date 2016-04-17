@@ -168,6 +168,7 @@ perform_user_join (RealmClient *client,
 typedef struct {
 	gchar *user;
 	gchar *computer_ou;
+	gchar *computer_name;
 	gchar *client_software;
 	gchar *server_software;
 	gchar *membership_software;
@@ -184,6 +185,7 @@ realm_join_args_clear (gpointer data)
 	RealmJoinArgs *args = data;
 	g_free (args->user);
 	g_free (args->computer_ou);
+	g_free (args->computer_name);
 	g_free (args->client_software);
 	g_free (args->server_software);
 	g_free (args->user_principal);
@@ -238,6 +240,7 @@ perform_join (RealmClient *client,
 	}
 
 	options = realm_build_options (REALM_DBUS_OPTION_COMPUTER_OU, args->computer_ou,
+	                               REALM_DBUS_OPTION_COMPUTER_NAME, args->computer_name,
 	                               REALM_DBUS_OPTION_MEMBERSHIP_SOFTWARE, args->membership_software,
 	                               REALM_DBUS_OPTION_USER_PRINCIPAL, args->user_principal,
 	                               args->automatic_id_mapping_set ?
@@ -283,6 +286,8 @@ realm_join (RealmClient *client,
 		  N_("User name to use for enrollment"), NULL },
 		{ "computer-ou", 0, 0, G_OPTION_ARG_STRING, &args.computer_ou,
 		  N_("Computer OU DN to join"), NULL },
+		{ "computer-name", 0, 0, G_OPTION_ARG_STRING, &args.computer_name,
+			N_("Use specific computer name instead of hostname"), NULL },
 		{ "client-software", 0, 0, G_OPTION_ARG_STRING, &args.client_software,
 		  N_("Use specific client software"), NULL },
 		{ "server-software", 0, 0, G_OPTION_ARG_STRING, &args.server_software,
