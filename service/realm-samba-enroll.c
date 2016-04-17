@@ -84,27 +84,37 @@ fallback_workgroup (const gchar *realm)
 static JoinClosure *
 join_closure_init (GTask *task,
                    RealmDisco *disco,
+                   GVariant *options,
                    GDBusMethodInvocation *invocation)
 {
 	JoinClosure *join;
 	gchar *workgroup;
 	GError *error = NULL;
 	int temp_fd;
+	const gchar *explicit_computer_name = NULL;
+	const gchar *authid = NULL;
 
 	join = g_new0 (JoinClosure, 1);
 	join->disco = realm_disco_ref (disco);
 	join->invocation = invocation ? g_object_ref (invocation) : NULL;
 	g_task_set_task_data (task, join, join_closure_free);
 
+	explicit_computer_name = realm_options_computer_name (options, disco->domain_name);
+	/* Set netbios name to explicit or truncated name if available */
+	if (explicit_computer_name != NULL)
+		authid = explicit_computer_name;
+	else if (disco->explicit_netbios)
+		authid = disco->explicit_netbios;
+
 	join->config = realm_ini_config_new (REALM_INI_NO_WATCH | REALM_INI_PRIVATE);
 	realm_ini_config_set (join->config, REALM_SAMBA_CONFIG_GLOBAL,
 	                      "security", "ads",
 	                      "kerberos method", "system keytab",
 	                      "realm", disco->kerberos_realm,
-	                      "netbios name", disco->explicit_netbios,
+	                      "netbios name", authid,
 	                      NULL);
 
-	/*
+    /*
 	 * Samba complains if we don't set a 'workgroup' setting for the realm we're
 	 * going to join. If we didn't yet manage to lookup the workgroup, then go ahead
 	 * and assume that the first domain component is the workgroup name.
@@ -377,14 +387,18 @@ realm_samba_enroll_join_async (RealmDisco *disco,
 {
 	GTask *task;
 	JoinClosure *join;
+	const gchar *explicit_computer_name;
 
 	g_return_if_fail (disco != NULL);
 	g_return_if_fail (cred != NULL);
 
 	task = g_task_new (NULL, NULL, callback, user_data);
-	join = join_closure_init (task, disco, invocation);
-
-	if (disco->explicit_netbios) {
+	join = join_closure_init (task, disco, options, invocation);
+	explicit_computer_name = realm_options_computer_name (options, disco->domain_name);
+	if (explicit_computer_name != NULL) {
+		realm_diagnostics_info (invocation, "Joining using a manual netbios name: %s",
+		                        explicit_computer_name);
+	} else if (disco->explicit_netbios) {
 		realm_diagnostics_info (invocation, "Joining using a truncated netbios name: %s",
 		                        disco->explicit_netbios);
 	}
@@ -448,7 +462,7 @@ realm_samba_enroll_leave_async (RealmDisco *disco,
 	JoinClosure *join;
 
 	task = g_task_new (NULL, NULL, callback, user_data);
-	join = join_closure_init (task, disco, invocation);
+	join = join_closure_init (task, disco, options, invocation);
 
 	switch (cred->type) {
 	case REALM_CREDENTIAL_PASSWORD:

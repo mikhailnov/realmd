@@ -66,6 +66,7 @@ G_BEGIN_DECLS
 #define   REALM_DBUS_OPTION_MEMBERSHIP_SOFTWARE    "membership-software"
 #define   REALM_DBUS_OPTION_USER_PRINCIPAL         "user-principal"
 #define   REALM_DBUS_OPTION_MANAGE_SYSTEM          "manage-system"
+#define   REALM_DBUS_OPTION_COMPUTER_NAME          "computer-name"
 
 #define   REALM_DBUS_IDENTIFIER_ACTIVE_DIRECTORY   "active-directory"
 #define   REALM_DBUS_IDENTIFIER_WINBIND            "winbind"

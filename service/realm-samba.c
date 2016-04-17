@@ -183,6 +183,13 @@ on_join_do_winbind (GObject *source,
 	GHashTable *settings = NULL;
 	GError *error = NULL;
 	const gchar *name;
+	const gchar *computer_name;
+
+	computer_name = realm_options_computer_name (enroll->options, enroll->disco->domain_name);
+	/* Use truncated name if set and explicit name is not available */
+	if (enroll->disco->explicit_netbios && computer_name == NULL)
+		computer_name = enroll->disco->explicit_netbios;
+
 
 	realm_samba_enroll_join_finish (result, &error);
 	if (error == NULL) {
@@ -192,11 +199,12 @@ on_join_do_winbind (GObject *source,
 		                         "workgroup", enroll->disco->workgroup,
 		                         "template homedir", realm_settings_string ("users", "default-home"),
 		                         "template shell", realm_settings_string ("users", "default-shell"),
-		                         "netbios name", enroll->disco->explicit_netbios,
+		                         "netbios name", computer_name,
 		                         "password server", enroll->disco->explicit_server,
 		                         "kerberos method", "system keytab",
 		                         NULL);
 	}
+
 
 	if (error == NULL) {
 		name = realm_kerberos_get_name (REALM_KERBEROS (self));

@@ -159,3 +159,24 @@ realm_options_check_domain_name (const gchar *name)
 
 	return TRUE;
 }
+
+const gchar *
+realm_options_computer_name (GVariant *options,
+                           const gchar *realm_name)
+{
+	const gchar *computer_name = NULL;
+	gchar *section;
+
+	if (options) {
+		if (!g_variant_lookup (options, REALM_DBUS_OPTION_COMPUTER_NAME, "&s", &computer_name))
+			computer_name = NULL;
+	}
+
+	if (realm_name && !computer_name) {
+		section = g_utf8_casefold (realm_name, -1);
+		computer_name = realm_settings_value (section, REALM_DBUS_OPTION_COMPUTER_NAME);
+		g_free (section);
+	}
+
+	return g_strdup (computer_name);
+}

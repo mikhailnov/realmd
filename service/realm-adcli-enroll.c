@@ -84,6 +84,7 @@ realm_adcli_enroll_join_async (RealmDisco *disco,
 	gchar *upn_arg = NULL;
 	gchar *server_arg = NULL;
 	gchar *ou_arg = NULL;
+	const gchar *computer_name = NULL;
 
 	g_return_if_fail (cred != NULL);
 	g_return_if_fail (disco != NULL);
@@ -114,7 +115,14 @@ realm_adcli_enroll_join_async (RealmDisco *disco,
 		g_ptr_array_add (args, (gpointer)disco->explicit_server);
 	}
 
-	if (disco->explicit_netbios) {
+		/* Pass manually configured or truncated computer name to adcli */
+		computer_name = realm_options_computer_name (options, disco->domain_name);
+		if (computer_name != NULL) {
+			realm_diagnostics_info (invocation, "Joining using a manual netbios name: %s",
+			                        computer_name);
+			g_ptr_array_add (args, "--computer-name");
+			g_ptr_array_add (args, (gpointer)computer_name);
+		} else if (disco->explicit_netbios) {
 		realm_diagnostics_info (invocation, "Joining using a truncated netbios name: %s",
 		                        disco->explicit_netbios);
 		g_ptr_array_add (args, "--computer-name");
@@ -192,7 +200,6 @@ realm_adcli_enroll_join_async (RealmDisco *disco,
 
 	if (input)
 		g_bytes_unref (input);
-
 	free (ccache_arg);
 	free (upn_arg);
 	free (server_arg);

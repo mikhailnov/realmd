@@ -163,6 +163,7 @@ configure_sssd_for_domain (RealmIniConfig *config,
 	GString *realmd_tags;
 	const gchar *access_provider;
 	const gchar *shell;
+    const gchar *explicit_computer_name;
 	gchar *authid = NULL;
 	gboolean qualify;
 	gboolean ret;
@@ -172,17 +173,19 @@ configure_sssd_for_domain (RealmIniConfig *config,
 	home = realm_sssd_build_default_home (realm_settings_string ("users", "default-home"));
 	qualify = realm_options_qualify_names (disco->domain_name);
 	shell = realm_settings_string ("users", "default-shell");
-
+	explicit_computer_name = realm_options_computer_name (options, disco->domain_name);
 	realmd_tags = g_string_new ("");
 	if (realm_options_manage_system (options, disco->domain_name))
 		g_string_append (realmd_tags, "manages-system ");
 	g_string_append (realmd_tags, use_adcli ? "joined-with-adcli " : "joined-with-samba ");
 
 	/*
-	 * Explicitly set the netbios authid for sssd to use in this case, since
+	 * Explicitly set the netbios authid for sssd to use in these cases, since
 	 * otherwise sssd won't know which kerberos principal to use
 	 */
-	if (disco->explicit_netbios)
+	if (explicit_computer_name != NULL)
+		authid = g_strdup_printf ("%s$", explicit_computer_name);
+	else if (disco->explicit_netbios)
 		authid = g_strdup_printf ("%s$", disco->explicit_netbios);
 
 	ret = realm_sssd_config_add_domain (config, disco->domain_name, error,
