@@ -166,7 +166,10 @@ $ <command>getent passwd DOMAIN\Administrator</command>
 		<para>The join operation will create or update a computer account
 		in the domain. If you wish to specify a specific organizational unit
 		where this account is created, you can use the
-		<link linkend="realmd-conf-active-directory"><option>computer-ou</option> setting</link>.</para>
+		<link linkend="realmd-conf-active-directory"><option>computer-ou</option> setting</link>.
+	        Additonally, you can override the default name for the computer account with the
+		<link linkend="realmd-conf-active-directory"><option>computer-name</option>
+		setting</link>.</para>
 
 		<para>Specify the <option>--user</option> to choose a different
 		user name than the default <literal>Administrator</literal> user.</para>
