@@ -479,8 +479,6 @@ on_install_resolved (GObject *source,
 			packages_install_async (install->connection,
 			                        (const gchar **)package_ids, cancellable,
 			                        on_install_installed, g_object_ref (task));
-			if (cancellable)
-				g_object_unref (cancellable);
 		}
 
 		g_free (missing);
@@ -649,7 +647,6 @@ realm_packages_install_async (const gchar **package_sets,
 		cancellable = realm_invocation_get_cancellable (install->invocation);
 		packages_resolve_async (connection, (const gchar **)install->packages, cancellable,
 		                        on_install_resolved, g_object_ref (task));
-		g_object_unref (cancellable);
 	}
 
 	g_object_unref (task);
