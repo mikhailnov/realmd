@@ -2,3 +2,4 @@
 Name=org.freedesktop.realmd
 Exec=@privatedir@/realmd
 User=root
+@dbus_systemd_service@

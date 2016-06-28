@@ -110,6 +110,13 @@ fi
 SYSTEMD_UNIT_DIR="$with_systemd_unit_dir"
 AC_SUBST(SYSTEMD_UNIT_DIR)
 AM_CONDITIONAL(WITH_SYSTEMD, [test -n "$with_systemd_unit_dir"])
+
+dbus_systemd_service=""
+if test -n "$with_systemd_unit_dir"; then
+	dbus_systemd_service="SystemdService=realmd.service"
+fi
+AC_SUBST(dbus_systemd_service)
+
 AC_MSG_RESULT($with_systemd_unit_dir)
 
 AC_ARG_WITH(systemd-journal,

@@ -49,6 +49,7 @@ SED_SUBST = sed \
 	-e 's,[@]abs_srcdir[@],$(abs_srcdir),g' \
 	-e 's,[@]srcdir[@],$(srcdir),g' \
 	-e 's,[@]privatedir[@],$(privatedir),g' \
+	-e 's,[@]dbus_systemd_service[@],$(dbus_systemd_service),g' \
 	-e 's,[@]PACKAGE[@],$(PACKAGE),g' \
 	-e 's,[@]VERSION[@],$(VERSION),g' \
 	$(NULL)
