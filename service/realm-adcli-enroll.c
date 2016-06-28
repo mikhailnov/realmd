@@ -139,13 +139,13 @@ realm_adcli_enroll_join_async (RealmDisco *disco,
 			g_ptr_array_add (args, (gpointer)computer_ou);
 	}
 
-	os = realm_settings_value ("active-directory", "os-name");
+	os = realm_options_ad_specific (options, "os-name");
 	if (os != NULL && !g_str_equal (os, "")) {
 		g_ptr_array_add (args, "--os-name");
 		g_ptr_array_add (args, (gpointer)os);
 	}
 
-	os = realm_settings_value ("active-directory", "os-version");
+	os = realm_options_ad_specific (options, "os-version");
 	if (os != NULL && !g_str_equal (os, "")) {
 		g_ptr_array_add (args, "--os-version");
 		g_ptr_array_add (args, (gpointer)os);

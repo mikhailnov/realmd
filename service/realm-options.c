@@ -180,3 +180,21 @@ realm_options_computer_name (GVariant *options,
 
 	return g_strdup (computer_name);
 }
+
+const gchar *
+realm_options_ad_specific (GVariant *options,
+                           const gchar *option_name)
+{
+	const gchar *value = NULL;
+
+	if (options) {
+		if (!g_variant_lookup (options, option_name, "&s", &value))
+			value = NULL;
+	}
+
+	if (!value) {
+		value = realm_settings_value ("active-directory", option_name);
+	}
+
+	return g_strdup (value);
+}

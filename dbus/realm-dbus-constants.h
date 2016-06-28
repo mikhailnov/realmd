@@ -67,6 +67,8 @@ G_BEGIN_DECLS
 #define   REALM_DBUS_OPTION_USER_PRINCIPAL         "user-principal"
 #define   REALM_DBUS_OPTION_MANAGE_SYSTEM          "manage-system"
 #define   REALM_DBUS_OPTION_COMPUTER_NAME          "computer-name"
+#define   REALM_DBUS_OPTION_OS_NAME                "os-name"
+#define   REALM_DBUS_OPTION_OS_VERSION             "os-version"
 
 #define   REALM_DBUS_IDENTIFIER_ACTIVE_DIRECTORY   "active-directory"
 #define   REALM_DBUS_IDENTIFIER_WINBIND            "winbind"

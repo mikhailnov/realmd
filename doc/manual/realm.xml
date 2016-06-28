@@ -243,6 +243,18 @@ $ realm join --user=admin --computer-ou=OU=Special domain.example.com
 			the value for this option, then a principal will be set
 			in the form of <literal>host/shortname@REALM</literal></para></listitem>
 		</varlistentry>
+		<varlistentry>
+			<term><option>--os-name=xxx</option></term>
+			<listitem><para>The name of the operation system of the
+			client. When joining an AD domain the value is store in
+			the matching AD attribute.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-version=xxx</option></term>
+			<listitem><para>The version of the operation system of the
+			client. When joining an AD domain the value is store in
+			the matching AD attribute.</para></listitem>
+		</varlistentry>
 	</variablelist>
 
 </refsect1>

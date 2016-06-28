@@ -335,11 +335,11 @@ begin_join (GTask *task,
 		}
 	}
 
-	os = realm_settings_value ("active-directory", "os-name");
+	os = realm_options_ad_specific(options, "os-name");
 	if (os != NULL && !g_str_equal (os, ""))
 		join->join_args[at++] = g_strdup_printf ("osName=%s", os);
 
-	os = realm_settings_value ("active-directory", "os-version");
+	os = realm_options_ad_specific(options, "os-version");
 	if (os != NULL && !g_str_equal (os, ""))
 		join->join_args[at++] = g_strdup_printf ("osVer=%s", os);
 

@@ -169,6 +169,8 @@ typedef struct {
 	gchar *user;
 	gchar *computer_ou;
 	gchar *computer_name;
+	gchar *os_name;
+	gchar *os_version;
 	gchar *client_software;
 	gchar *server_software;
 	gchar *membership_software;
@@ -241,6 +243,8 @@ perform_join (RealmClient *client,
 
 	options = realm_build_options (REALM_DBUS_OPTION_COMPUTER_OU, args->computer_ou,
 	                               REALM_DBUS_OPTION_COMPUTER_NAME, args->computer_name,
+	                               REALM_DBUS_OPTION_OS_NAME, args->os_name,
+	                               REALM_DBUS_OPTION_OS_VERSION, args->os_version,
 	                               REALM_DBUS_OPTION_MEMBERSHIP_SOFTWARE, args->membership_software,
 	                               REALM_DBUS_OPTION_USER_PRINCIPAL, args->user_principal,
 	                               args->automatic_id_mapping_set ?
@@ -288,6 +292,10 @@ realm_join (RealmClient *client,
 		  N_("Computer OU DN to join"), NULL },
 		{ "computer-name", 0, 0, G_OPTION_ARG_STRING, &args.computer_name,
 			N_("Use specific computer name instead of hostname"), NULL },
+		{ "os-name", 0, 0, G_OPTION_ARG_STRING, &args.os_name,
+			N_("Use specific operation system name"), NULL },
+		{ "os-version", 0, 0, G_OPTION_ARG_STRING, &args.os_version,
+			N_("Use specific operation system version"), NULL },
 		{ "client-software", 0, 0, G_OPTION_ARG_STRING, &args.client_software,
 		  N_("Use specific client software"), NULL },
 		{ "server-software", 0, 0, G_OPTION_ARG_STRING, &args.server_software,

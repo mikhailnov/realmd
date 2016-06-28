@@ -44,6 +44,9 @@ gboolean       realm_options_check_domain_name        (const gchar *domain_name)
 const gchar *  realm_options_computer_name           (GVariant *options,
                                                        const gchar *realm_name);
 
+const gchar *  realm_options_ad_specific              (GVariant *options,
+                                                       const gchar *option_name);
+
 G_END_DECLS
 
 #endif /* __REALM_OPTIONS_H__ */
