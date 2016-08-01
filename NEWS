@@ -1,3 +1,11 @@
+0.16.3
+ * Add os-name and os-version command line options
+ * Add computer-name support to realmd join CLI and config
+ * Don't fall over if a [domain] section in sssd.conf exists
+ * Fully qualify --computer-ou DN before passing to adcli
+ * Fix issue where diagnostics about package install hidden
+ * Updated translations
+
 0.16.2
  * Be more liberal with domain name chars
  * Increase timeout when calling PackageKit
