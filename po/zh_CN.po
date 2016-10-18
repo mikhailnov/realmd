@@ -3,15 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# bnw, 2015
 # Christopher Meng <i@cicku.me>, 2013
-# Wylmer Wang <wantinghard@gmail.com>, 2013
+# Christopher Meng <i@cicku.me>, 2013
+# bnw, 2015
+# Mingye Wang <arthur200126@gmail.com>, 2015
+# Wylmer Wang, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: realmd\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-19 11:43+0200\n"
-"PO-Revision-Date: 2015-10-20 19:12+0000\n"
-"Last-Translator: Stef Walter <stefw@gnome.org>\n"
+"PO-Revision-Date: 2015-11-11 01:02+0000\n"
+"Last-Translator: Mingye Wang <arthur200126@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/freedesktop/realmd/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +25,7 @@ msgstr ""
 
 #: ../service/org.freedesktop.realmd.policy.in.h:1
 msgid "Discover realm"
-msgstr "搜索领域"
+msgstr "探索领域"
 
 #: ../service/org.freedesktop.realmd.policy.in.h:2
 msgid "Authentication is required to discover a kerberos realm"
@@ -52,7 +56,7 @@ msgstr "变更登录策略"
 msgid ""
 "Authentication is required to change the policy of who can log in on this "
 "computer."
-msgstr "更改什么用户可登录此计算机的策略需要进行认证。"
+msgstr "更改哪些用户可登录此计算机的策略需要进行认证。"
 
 #: ../service/realm-command.c:347
 #, c-format
@@ -82,11 +86,11 @@ msgstr "已配置的命令不正确：%s"
 #: ../service/realm-disco-mscldap.c:198
 #, c-format
 msgid "Received invalid or unsupported Netlogon data from server"
-msgstr ""
+msgstr "从服务器收到无效的 Netlogon 数据"
 
 #: ../service/realm-disco-mscldap.c:346
 msgid "LDAP on this system does not support UDP connections"
-msgstr ""
+msgstr "本系统的 LDAP 不支持 UDP 连接"
 
 #: ../service/realm-example.c:82 ../service/realm-samba.c:247
 #: ../service/realm-sssd-ad.c:309 ../service/realm-sssd-ipa.c:318
@@ -114,7 +118,7 @@ msgstr "需要凭据以离开该域"
 #: ../service/realm-ini-config.c:736
 #, c-format
 msgid "Couldn't write out config: %s"
-msgstr ""
+msgstr "无法写入配置：%s"
 
 #: ../service/realm-invocation.c:536
 msgid "Not authorized to perform this action"
@@ -135,23 +139,23 @@ msgstr "从域中取消登记计算机失败。请查看诊断信息。"
 
 #: ../service/realm-kerberos.c:272
 msgid "Joining this realm without credentials is not supported"
-msgstr ""
+msgstr "不支持没有凭据就加入到这个领域"
 
 #: ../service/realm-kerberos.c:273
 msgid "Leaving this realm without credentials is not supported"
-msgstr ""
+msgstr "不支持无证书离开此域"
 
 #: ../service/realm-kerberos.c:276
 msgid "Joining this realm using a credential cache is not supported"
-msgstr ""
+msgstr "不支持使用证书缓存加入此域"
 
 #: ../service/realm-kerberos.c:277
 msgid "Leaving this realm using a credential cache is not supported"
-msgstr ""
+msgstr "不支持使用证书缓存离开此域"
 
 #: ../service/realm-kerberos.c:280
 msgid "Joining this realm using a secret is not supported"
-msgstr ""
+msgstr "不支持使用秘密加入此域"
 
 #: ../service/realm-kerberos.c:281
 msgid "Unenrolling this realm using a secret is not supported"
@@ -167,11 +171,11 @@ msgstr "不支持使用密码来取消登记这个领域"
 
 #: ../service/realm-kerberos.c:311
 msgid "Joining this realm is not supported"
-msgstr ""
+msgstr "不支持加入此域"
 
 #: ../service/realm-kerberos.c:312
 msgid "Leaving this realm is not supported"
-msgstr ""
+msgstr "不支持离开此域"
 
 #: ../service/realm-kerberos.c:332 ../service/realm-kerberos.c:504
 msgid "Already running another action"
@@ -180,31 +184,31 @@ msgstr "已经在运行另一个操作"
 #: ../service/realm-kerberos.c:375
 #, c-format
 msgid "Already joined to another domain: %s"
-msgstr ""
+msgstr "已加入另一个域：%s"
 
 #: ../service/realm-kerberos.c:446
 msgid "Failed to change permitted logins. See diagnostics."
-msgstr "变更许可的登录失败。请查看诊断。"
+msgstr "变更许可的登录名失败。请查看诊断。"
 
 #: ../service/realm-kerberos.c:747
 #, c-format
 msgid "The realm does not allow specifying logins"
-msgstr "这个领域不允许指定的登录"
+msgstr "这个领域不允许指定的登录名"
 
 #: ../service/realm-kerberos.c:755
 #, c-format
 msgid "Invalid login argument%s%s%s does not match the login format."
-msgstr "无效的登录参数%s%s%s 与登录格式不符。"
+msgstr "无效的登录名参数%s%s%s 与登录名格式不符。"
 
 #: ../service/realm-packages.c:389
 #, c-format
 msgid "The following packages are not available for installation: %s"
-msgstr ""
+msgstr "无法获取安装这些软件包：%s"
 
 #: ../service/realm-packages.c:471 ../service/realm-packages.c:508
 #, c-format
 msgid "Necessary packages are not installed: %s"
-msgstr ""
+msgstr "必要软件包未安装：%s"
 
 #. * Various people have been worried by installing packages
 #. * quietly, so notify about what's going on.
@@ -215,7 +219,7 @@ msgstr ""
 #. * worried, remove realmd and do stuff manually.
 #: ../service/realm-packages.c:477 ../tools/realm-client.c:143
 msgid "Installing necessary packages"
-msgstr ""
+msgstr "正在安装必要的软件包"
 
 #: ../service/realm-provider.c:161
 msgid "Failed to discover realm. See diagnostics."
@@ -229,12 +233,12 @@ msgstr "尚未加入该域"
 #: ../service/realm-samba.c:477 ../service/realm-samba.c:519
 #, c-format
 msgid "The Samba provider cannot restrict permitted logins."
-msgstr "Samba 提供程序无法对允许的登录进行限制。"
+msgstr "Samba 提供程序无法对允许的登录名进行限制。"
 
 #: ../service/realm-sssd.c:130
 #, c-format
 msgid "Invalid login argument '%s' contains unsupported characters."
-msgstr ""
+msgstr "无效登录参数「%s」，含有不支持的字符。"
 
 #: ../service/realm-sssd-ad.c:126 ../service/realm-sssd-ipa.c:124
 #, c-format
@@ -286,11 +290,11 @@ msgstr "sssd.conf 中未包含域 %s"
 
 #: ../service/realm-sssd-ipa.c:312
 msgid "The computer-ou argument is not supported when joining an IPA domain."
-msgstr ""
+msgstr "在加入 IPA 域时不支持 computer-ou 参数。"
 
 #: ../service/realm-sssd-ipa.c:480
 msgid "Not currently joined to this realm"
-msgstr ""
+msgstr "还未加入此域"
 
 #: ../tools/realm.c:40
 msgid "Discover available realm"
@@ -310,16 +314,16 @@ msgstr "列出已知的领域"
 
 #: ../tools/realm.c:44
 msgid "Permit user logins"
-msgstr "许可用户登录"
+msgstr "允许用户登录名"
 
 #: ../tools/realm.c:45
 msgid "Deny user logins"
-msgstr "拒绝用户登录"
+msgstr "拒绝用户登录名"
 
 #: ../tools/realm.c:184
 #, c-format
 msgid "Invalid value for %s option: %s"
-msgstr ""
+msgstr "%s 选项无效：%s"
 
 #: ../tools/realm.c:216
 msgid "Install mode to a specific prefix"
@@ -331,7 +335,7 @@ msgstr "Verbose 输出"
 
 #: ../tools/realm.c:218
 msgid "Do not prompt for input"
-msgstr ""
+msgstr "不提示输入"
 
 #: ../tools/realm-client.c:193 ../tools/realm-client.c:203
 msgid "Couldn't connect to realm service"
@@ -361,12 +365,12 @@ msgstr "无法运行 realmd"
 #: ../tools/realm-client.c:565
 #, c-format
 msgid "Couldn't create runtime directory: %s: %s"
-msgstr ""
+msgstr "无法创建运行目录：%s：%s"
 
 #: ../tools/realm-client.c:575
 #, c-format
 msgid "Couldn't create credential cache file: %s: %s"
-msgstr ""
+msgstr "无法创建证书缓存文件：%s：%s"
 
 #: ../tools/realm-client.c:585
 msgid "Couldn't resolve credential cache"
@@ -398,7 +402,7 @@ msgstr "无法初始化 Kerberos"
 #: ../tools/realm-client.c:817
 #, c-format
 msgid "Cannot prompt for a password when running in unattended mode"
-msgstr ""
+msgstr "未参与模式运行是无法提示密码"
 
 #: ../tools/realm-client.c:821
 #, c-format
@@ -422,11 +426,11 @@ msgstr "领域不支持使用一次性密码的成员身份操作"
 
 #: ../tools/realm-client.c:981
 msgid "Couldn't select kerberos credentials"
-msgstr ""
+msgstr "无法选取 kerberos 证书"
 
 #: ../tools/realm-client.c:995
 msgid "Couldn't read kerberos credentials"
-msgstr ""
+msgstr "无法读取 kerberos 证书"
 
 #: ../tools/realm-client.c:1045
 #, c-format
@@ -479,7 +483,7 @@ msgstr "无法加入领域"
 
 #: ../tools/realm-join.c:227
 msgid "Cannot join this realm"
-msgstr ""
+msgstr "无法加入此域"
 
 #: ../tools/realm-join.c:229
 msgid "No such realm found"
@@ -503,11 +507,11 @@ msgstr "使用预设的一次性密码加入"
 
 #: ../tools/realm-join.c:297
 msgid "Turn off automatic id mapping"
-msgstr ""
+msgstr "关闭自动身份映射"
 
 #: ../tools/realm-join.c:299
 msgid "Set the user principal for the computer account"
-msgstr ""
+msgstr "设置计算机帐号的主要用户"
 
 #: ../tools/realm-join.c:319
 msgid "Specify one realm to join"
@@ -536,53 +540,53 @@ msgstr "用于移除的用户名"
 
 #: ../tools/realm-logins.c:129 ../tools/realm-logins.c:175
 msgid "Couldn't change permitted logins"
-msgstr ""
+msgstr "无法变更许可的登录名"
 
 #: ../tools/realm-logins.c:200
 msgid "Permit any realm account login"
-msgstr ""
+msgstr "允许任意域帐户登录名"
 
 #: ../tools/realm-logins.c:200
 msgid "Deny any realm account login"
-msgstr ""
+msgstr "拒绝任意域帐户登录名"
 
 #: ../tools/realm-logins.c:202
 msgid "Withdraw permit for a realm account to login"
-msgstr ""
+msgstr "收回一个域帐户的登录名许可"
 
 #: ../tools/realm-logins.c:204
 msgid "Treat names as groups which to permit"
-msgstr ""
+msgstr "将名称视为要允许的群组列表"
 
 #: ../tools/realm-logins.c:205
 msgid "Realm to permit/deny logins for"
-msgstr "要允许/拒绝登录的领域"
+msgstr "要允许/拒绝登录名的领域"
 
 #: ../tools/realm-logins.c:219
 msgid "No logins should be specified with -a or --all"
-msgstr ""
+msgstr "使用 -a 或 --all 不能指定登录名"
 
 #: ../tools/realm-logins.c:222
 msgid "The --withdraw or -x arguments cannot be used when denying logins"
-msgstr ""
+msgstr "拒绝登录名时不能使用 --withdraw 或 -x 选项"
 
 #: ../tools/realm-logins.c:225
 msgid "Specific logins must be specified with --withdraw"
-msgstr ""
+msgstr "指定的登录名必须与 --withdraw 共用"
 
 #: ../tools/realm-logins.c:228
 msgid "Groups may not be specified with -a or --all"
-msgstr ""
+msgstr "使用 -a 或 --all 不能指定群组"
 
 #: ../tools/realm-logins.c:235
 msgid "Use --all to deny all logins"
-msgstr ""
+msgstr "使用 --all 来拒绝所有登录名"
 
 #: ../tools/realm-logins.c:237
 msgid "Specify specific users to add or remove from the permitted list"
-msgstr ""
+msgstr "指定需要从允许列表里添加或删除的用户"
 
 #: ../tools/realm-logins.c:241
 msgid ""
 "Specifying deny without --all is deprecated. Use realm permit --withdraw"
-msgstr ""
+msgstr "不带 --all 指定拒绝已被弃用；请改用 realm permit --withdraw"
