@@ -156,6 +156,7 @@ on_ipa_client_do_restart (GObject *source,
                           GAsyncResult *result,
                           gpointer user_data)
 {
+	const gchar *services[] = { "nss", "pam", NULL };
 	GTask *task = G_TASK (user_data);
 	EnrollClosure *enroll = g_task_get_task_data (task);
 	RealmSssd *sssd = g_task_get_source_object (task);
@@ -206,6 +207,8 @@ on_ipa_client_do_restart (GObject *source,
 		                                 "fallback_homedir", home,
 		                                 "realmd_tags", realmd_tags,
 		                                 NULL);
+
+		realm_ini_config_set_list_diff (config, "sssd", "services", ", ", services, NULL);
 
 		g_free (home);
 	}

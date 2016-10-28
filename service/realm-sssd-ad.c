@@ -160,6 +160,7 @@ configure_sssd_for_domain (RealmIniConfig *config,
                            gboolean use_adcli,
                            GError **error)
 {
+	const gchar *services[] = { "nss", "pam", NULL };
 	GString *realmd_tags;
 	const gchar *access_provider;
 	const gchar *shell;
@@ -205,6 +206,8 @@ configure_sssd_for_domain (RealmIniConfig *config,
 	                                    "ad_server", disco->explicit_server,
 	                                    "ldap_sasl_authid", authid,
 	                                    NULL);
+
+	realm_ini_config_set_list_diff (config, "sssd", "services", ", ", services, NULL);
 
 	g_free (authid);
 	g_string_free (realmd_tags, TRUE);
