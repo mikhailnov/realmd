@@ -159,9 +159,10 @@ ldap_source_finalize (GSource *source)
 {
 	LdapSource *ls = (LdapSource *)source;
 
-	/* Yeah, this is pretty rough, but we don't want blocking here */
-	close (ls->sock);
 	ldap_destroy (ls->ldap);
+
+	ls->sock = -1;
+	ls->ldap = NULL;
 
 	if (ls->cancellable) {
 		g_cancellable_release_fd (ls->cancellable);
