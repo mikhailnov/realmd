@@ -286,28 +286,28 @@ realm_join (RealmClient *client,
 	gint ret = 0;
 
 	GOptionEntry option_entries[] = {
-		{ "user", 'U', 0, G_OPTION_ARG_STRING, &args.user,
-		  N_("User name to use for enrollment"), NULL },
-		{ "computer-ou", 0, 0, G_OPTION_ARG_STRING, &args.computer_ou,
-		  N_("Computer OU DN to join"), NULL },
-		{ "computer-name", 0, 0, G_OPTION_ARG_STRING, &args.computer_name,
-			N_("Use specific computer name instead of hostname"), NULL },
-		{ "os-name", 0, 0, G_OPTION_ARG_STRING, &args.os_name,
-			N_("Use specific operation system name"), NULL },
-		{ "os-version", 0, 0, G_OPTION_ARG_STRING, &args.os_version,
-			N_("Use specific operation system version"), NULL },
+		{ "automatic-id-mapping", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK,
+		  realm_join_arg_id_mapping, N_("Turn off automatic id mapping"), "no" },
 		{ "client-software", 0, 0, G_OPTION_ARG_STRING, &args.client_software,
 		  N_("Use specific client software"), NULL },
-		{ "server-software", 0, 0, G_OPTION_ARG_STRING, &args.server_software,
-		  N_("Use specific server software"), NULL },
+		{ "computer-name", 0, 0, G_OPTION_ARG_STRING, &args.computer_name,
+                  N_("Use specific computer name instead of hostname"), NULL },
+		{ "computer-ou", 0, 0, G_OPTION_ARG_STRING, &args.computer_ou,
+		  N_("Computer OU DN to join"), NULL },
 		{ "membership-software", 0, 0, G_OPTION_ARG_STRING, &args.membership_software,
 		  N_("Use specific membership software"), NULL },
 		{ "no-password", 0, 0, G_OPTION_ARG_NONE, &args.no_password,
 		  N_("Join automatically without a password"), NULL },
 		{ "one-time-password", 0, 0, G_OPTION_ARG_STRING, &args.one_time_password,
 		  N_("Join using a preset one time password"), NULL },
-		{ "automatic-id-mapping", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK,
-		  realm_join_arg_id_mapping, N_("Turn off automatic id mapping"), "no" },
+		{ "os-name", 0, 0, G_OPTION_ARG_STRING, &args.os_name,
+                  N_("Use specific operation system name"), NULL },
+		{ "os-version", 0, 0, G_OPTION_ARG_STRING, &args.os_version,
+                  N_("Use specific operation system version"), NULL },
+		{ "server-software", 0, 0, G_OPTION_ARG_STRING, &args.server_software,
+		  N_("Use specific server software"), NULL },
+		{ "user", 'U', 0, G_OPTION_ARG_STRING, &args.user,
+		  N_("User name to use for enrollment"), NULL },
 		{ "user-principal", 0, 0, G_OPTION_ARG_STRING, &args.user_principal,
 		  N_("Set the user principal for the computer account"), NULL },
 		{ NULL, }
@@ -315,7 +315,7 @@ realm_join (RealmClient *client,
 
 	memset (&args, 0, sizeof (args));
 
-	context = g_option_context_new ("realm");
+	context = g_option_context_new ("join REALM");
 	g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
 
 	group = g_option_group_new (NULL, NULL, NULL, &args, realm_join_args_clear);

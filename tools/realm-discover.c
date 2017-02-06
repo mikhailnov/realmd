@@ -186,7 +186,7 @@ realm_discover (RealmClient *client,
 		{ NULL, }
 	};
 
-	context = g_option_context_new ("realm-or-domain");
+	context = g_option_context_new ("discover REALM-OR-DOMAIN");
 	g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
 	g_option_context_add_main_entries (context, option_entries, NULL);
 	g_option_context_add_main_entries (context, realm_global_options, NULL);
@@ -274,7 +274,7 @@ realm_list (RealmClient *client,
 		{ NULL, }
 	};
 
-	context = g_option_context_new ("realm");
+	context = g_option_context_new ("list");
 	g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
 	g_option_context_add_main_entries (context, option_entries, NULL);
 	g_option_context_add_main_entries (context, realm_global_options, NULL);
