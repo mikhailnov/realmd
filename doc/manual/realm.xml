@@ -60,7 +60,7 @@
 
 	<variablelist>
 		<varlistentry>
-			<term><option>--install=/path</option></term>
+			<term><option>-i</option>, <option>--install=/path</option></term>
 			<listitem><para>Run in install mode. This makes realmd
 			chroot into the specified directory and place files in
 			appropriate locations for use during an installer. No
@@ -73,7 +73,7 @@
 			for input.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term><option>--verbose, -v</option></term>
+			<term><option>-v</option>, <option>--verbose</option></term>
 			<listitem><para>Display verbose diagnostics while doing
 			running commands.</para></listitem>
 		</varlistentry>
@@ -105,7 +105,7 @@ $ realm discover domain.example.com
 
 	<variablelist>
 		<varlistentry>
-			<term><option>--all</option></term>
+			<term><option>-a</option>, <option>--all</option></term>
 			<listitem><para>Show all discovered realms (in various
 			configurations).</para></listitem>
 		</varlistentry>
@@ -115,6 +115,10 @@ $ realm discover domain.example.com
 			use the given client software. Possible values include
 			<replaceable>sssd</replaceable> or
 			<replaceable>winbind</replaceable>.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-n</option>, <option>--name</option></term>
+			<listitem><para>Only show the names of the discovered realms.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><option>--server-software=xxx</option></term>
@@ -187,10 +191,13 @@ $ realm join --user=admin --computer-ou=OU=Special domain.example.com
 			in the domain already.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term><option>--user=xxx</option></term>
-			<listitem><para>The user name to be used to authenticate
-			with when joining the machine to the realm. You will
-			be prompted for a password.</para></listitem>
+			<term><option>--client-software=xxx</option></term>
+			<listitem><para>Only join realms for which we can
+			use the given client software. Possible values include
+			<replaceable>sssd</replaceable> or
+			<replaceable>winbind</replaceable>. Not all values are
+			supported for all realms. By default the client software
+			is automatically selected.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><option>--computer-ou=OU=xxx</option></term>
@@ -200,6 +207,14 @@ $ realm join --user=admin --computer-ou=OU=Special domain.example.com
 			and membership software. You can usually omit the root
 			DSE portion of distinguished name. This is an Active
 			Directory specific option.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--membership-software=xxx</option></term>
+			<listitem><para>The software to use when joining to the
+			realm. Possible values include <replaceable>samba</replaceable> or
+			<replaceable>adcli</replaceable>. Not all values are
+			supported for all realms. By default the membership software
+			is automatically selected.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><option>--no-password</option></term>
@@ -213,37 +228,6 @@ $ realm join --user=admin --computer-ou=OU=Special domain.example.com
 			all types of realms.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term><option>--client-software=xxx</option></term>
-			<listitem><para>Only join realms for which we can
-			use the given client software. Possible values include
-			<replaceable>sssd</replaceable> or
-			<replaceable>winbind</replaceable>. Not all values are
-			supported for all realms. By default the client software
-			is automatically selected.</para></listitem>
-		</varlistentry>
-		<varlistentry>
-			<term><option>--server-software=xxx</option></term>
-			<listitem><para>Only join realms for run the
-			given server software. Possible values include
-			<replaceable>active-directory</replaceable> or
-			<replaceable>ipa</replaceable>.</para></listitem>
-		</varlistentry>
-		<varlistentry>
-			<term><option>--membership-software=xxx</option></term>
-			<listitem><para>The software to use when joining to the
-			realm. Possible values include <replaceable>samba</replaceable> or
-			<replaceable>adcli</replaceable>. Not all values are
-			supported for all realms. By default the membership software
-			is automatically selected.</para></listitem>
-		</varlistentry>
-		<varlistentry>
-			<term><option>--user-principal=<parameter>host/name@REALM</parameter></option></term>
-			<listitem><para>Set the userPrincipalName field of the
-			computer account to this kerberos principal. If you omit
-			the value for this option, then a principal will be set
-			in the form of <literal>host/shortname@REALM</literal></para></listitem>
-		</varlistentry>
-		<varlistentry>
 			<term><option>--os-name=xxx</option></term>
 			<listitem><para>The name of the operation system of the
 			client. When joining an AD domain the value is store in
@@ -254,6 +238,26 @@ $ realm join --user=admin --computer-ou=OU=Special domain.example.com
 			<listitem><para>The version of the operation system of the
 			client. When joining an AD domain the value is store in
 			the matching AD attribute.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--server-software=xxx</option></term>
+			<listitem><para>Only join realms for run the
+			given server software. Possible values include
+			<replaceable>active-directory</replaceable> or
+			<replaceable>ipa</replaceable>.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-U</option>, <option>--user=xxx</option></term>
+			<listitem><para>The user name to be used to authenticate
+			with when joining the machine to the realm. You will
+			be prompted for a password.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--user-principal=<parameter>host/name@REALM</parameter></option></term>
+			<listitem><para>Set the userPrincipalName field of the
+			computer account to this kerberos principal. If you omit
+			the value for this option, then a principal will be set
+			in the form of <literal>host/shortname@REALM</literal></para></listitem>
 		</varlistentry>
 	</variablelist>
 
@@ -300,7 +304,7 @@ $ realm leave domain.example.com
 			for a pasword.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term><option>--user</option></term>
+			<term><option>-U</option>, <option>--user</option></term>
 			<listitem><para>The user name to be used to authenticate
 			with when leaving the realm. You will be prompted for a
 			password. Implies <option>--remove</option>.</para></listitem>
