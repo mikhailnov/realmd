@@ -208,7 +208,8 @@ on_ipa_client_do_restart (GObject *source,
 		                                 "realmd_tags", realmd_tags,
 		                                 NULL);
 
-		realm_ini_config_set_list_diff (config, "sssd", "services", ", ", services, NULL);
+		if (error == NULL)
+			realm_ini_config_change_list (config, "sssd", "services", ", ", services, NULL, &error);
 
 		g_free (home);
 	}

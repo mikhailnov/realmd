@@ -207,7 +207,8 @@ configure_sssd_for_domain (RealmIniConfig *config,
 	                                    "ldap_sasl_authid", authid,
 	                                    NULL);
 
-	realm_ini_config_set_list_diff (config, "sssd", "services", ", ", services, NULL);
+	if (ret)
+		ret = realm_ini_config_change_list (config, "sssd", "services", ", ", services, NULL, error);
 
 	g_free (authid);
 	g_string_free (realmd_tags, TRUE);
