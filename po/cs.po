@@ -1,208 +1,219 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: realmd\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-19 11:43+0200\n"
-"PO-Revision-Date: 2015-10-20 19:12+0000\n"
-"Last-Translator: Stef Walter <stefw@gnome.org>\n"
-"Language-Team: Czech (http://www.transifex.com/freedesktop/realmd/language/cs/)\n"
+"PO-Revision-Date: 2017-05-02 17:15+0200\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (http://www.transifex.com/freedesktop/realmd/language/"
+"cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: ../service/org.freedesktop.realmd.policy.in.h:1
 msgid "Discover realm"
-msgstr ""
+msgstr "Objevit sféru (realm)"
 
 #: ../service/org.freedesktop.realmd.policy.in.h:2
 msgid "Authentication is required to discover a kerberos realm"
-msgstr ""
+msgstr "Objevování kerberos sféry (realm) vyžaduje ověření"
 
 #: ../service/org.freedesktop.realmd.policy.in.h:3
 msgid "Join machine to realm"
-msgstr ""
+msgstr "Přidat stroj do do sféry (realm)"
 
 #: ../service/org.freedesktop.realmd.policy.in.h:4
 msgid "Authentication is required to join this machine to a realm or domain"
-msgstr ""
+msgstr "Připojení tohoto stroje do sféry (realm) / oblasti vyžaduje ověření"
 
 #: ../service/org.freedesktop.realmd.policy.in.h:5
 msgid "Remove machine from realm"
-msgstr ""
+msgstr "Odebrat stroj ze sféry (realm)"
 
 #: ../service/org.freedesktop.realmd.policy.in.h:6
 msgid ""
 "Authentication is required to remove this computer from a realm or domain."
-msgstr ""
+msgstr "Odebrání tohoto počítače ze sféry (realm) / domény vyžaduje ověření."
 
 #: ../service/org.freedesktop.realmd.policy.in.h:7
 msgid "Change login policy"
-msgstr ""
+msgstr "Změnit pravidla přihlašování"
 
 #: ../service/org.freedesktop.realmd.policy.in.h:8
 msgid ""
 "Authentication is required to change the policy of who can log in on this "
 "computer."
 msgstr ""
+"Ke změně pravidel toho, kdo se může přihlásit k tomuto počítači, je třeba "
+"se ověřit."
 
 #: ../service/realm-command.c:347
 #, c-format
 msgid "Process was terminated with signal: %d"
-msgstr ""
+msgstr "Proces byl ukončen se signálem: %d"
 
 #: ../service/realm-command.c:396 ../service/realm-ldap.c:349
 #, c-format
 msgid "The operation was cancelled"
-msgstr ""
+msgstr "Operace byla zrušena"
 
 #: ../service/realm-command.c:573
 #, c-format
 msgid "Configured command not found: %s"
-msgstr ""
+msgstr "Nastavený příkaz nenalezen: %s"
 
 #: ../service/realm-command.c:578
 #, c-format
 msgid "Skipped command: %s"
-msgstr ""
+msgstr "Přeskočené příkazy: %s"
 
 #: ../service/realm-command.c:584
 #, c-format
 msgid "Configured command invalid: %s"
-msgstr ""
+msgstr "Nastaven neplatný příkaz: %s"
 
 #: ../service/realm-disco-mscldap.c:198
 #, c-format
 msgid "Received invalid or unsupported Netlogon data from server"
-msgstr ""
+msgstr "Ze serveru obdržena neplatná nebo nepodporovaná Netlogon data"
 
 #: ../service/realm-disco-mscldap.c:346
 msgid "LDAP on this system does not support UDP connections"
-msgstr ""
+msgstr "LDAP na tomto systému nepodporuje UDP spojení"
 
 #: ../service/realm-example.c:82 ../service/realm-samba.c:247
 #: ../service/realm-sssd-ad.c:309 ../service/realm-sssd-ipa.c:318
 #, c-format
 msgid "Unsupported or unknown membership software '%s'"
-msgstr ""
+msgstr "Nepodporovaný nebo neznámý členský software „%s“"
 
 #: ../service/realm-example.c:170 ../service/realm-samba.c:282
 msgid "Already joined to a domain"
-msgstr ""
+msgstr "Už připojeno do domény"
 
 #: ../service/realm-example.c:178 ../service/realm-example.c:271
 msgid "Admin name or password is not valid"
-msgstr ""
+msgstr "Uživatelské jméno správce nebo heslo není platné"
 
 #: ../service/realm-example.c:242 ../service/realm-samba.c:422
 #: ../service/realm-sssd-ad.c:514
 msgid "Not currently joined to this domain"
-msgstr ""
+msgstr "Do této domény nejste v tuto chvíli přidaní"
 
 #: ../service/realm-example.c:301
 msgid "Need credentials for leaving this domain"
-msgstr ""
+msgstr "Pro opuštění této sféry je třeba přihlašovacích údajů"
 
 #: ../service/realm-ini-config.c:736
 #, c-format
 msgid "Couldn't write out config: %s"
-msgstr ""
+msgstr "Nepodařilo se zapsat nastavení: %s"
 
 #: ../service/realm-invocation.c:536
 msgid "Not authorized to perform this action"
-msgstr ""
+msgstr "Nejste oprávněni k provedení této akce"
 
 #: ../service/realm-kerberos.c:130 ../service/realm-kerberos.c:208
 #: ../service/realm-provider.c:156
 msgid "Operation was cancelled."
-msgstr ""
+msgstr "Operace byla zrušena."
 
 #: ../service/realm-kerberos.c:135
 msgid "Failed to enroll machine in realm. See diagnostics."
-msgstr ""
+msgstr "Nepodařilo se přidat stroj do sféry (realm). Viz diagnostika."
 
 #: ../service/realm-kerberos.c:213
 msgid "Failed to unenroll machine from domain. See diagnostics."
-msgstr ""
+msgstr "Odebrání stroje z domény se nezdařilo. Viz diagnostika."
 
 #: ../service/realm-kerberos.c:272
 msgid "Joining this realm without credentials is not supported"
 msgstr ""
+"Přidání se do této sféry (realm) bez přihlašovacích údajů není podporováno"
 
 #: ../service/realm-kerberos.c:273
 msgid "Leaving this realm without credentials is not supported"
-msgstr ""
+msgstr "Opuštění této sféry (realm) bez přihlašovacích údajů není podporováno"
 
 #: ../service/realm-kerberos.c:276
 msgid "Joining this realm using a credential cache is not supported"
 msgstr ""
+"Přidání se do této sféry (realm) pomocí mezipaměti přihlašovacích údajů "
+"není podporováno"
 
 #: ../service/realm-kerberos.c:277
 msgid "Leaving this realm using a credential cache is not supported"
 msgstr ""
+"Opuštění této sféry (realm) pomocí mezipaměti přihlašovacích údajů není "
+"podporováno"
 
 #: ../service/realm-kerberos.c:280
 msgid "Joining this realm using a secret is not supported"
-msgstr ""
+msgstr "Přidání se do této sféry (realm) pomocí hesla není podporováno"
 
 #: ../service/realm-kerberos.c:281
 msgid "Unenrolling this realm using a secret is not supported"
-msgstr ""
+msgstr "Opuštění této sféry (realm) pomocí hesla není podporováno"
 
 #: ../service/realm-kerberos.c:284
 msgid "Enrolling this realm using a password is not supported"
-msgstr ""
+msgstr "Přidání se do této sféry pomocí hesla není podporováno"
 
 #: ../service/realm-kerberos.c:285
 msgid "Unenrolling this realm using a password is not supported"
-msgstr ""
+msgstr "Opuštění této sféry (realm) pomocí hesla není podporováno"
 
 #: ../service/realm-kerberos.c:311
 msgid "Joining this realm is not supported"
-msgstr ""
+msgstr "Přidání se do této sféry (realm) není podporováno"
 
 #: ../service/realm-kerberos.c:312
 msgid "Leaving this realm is not supported"
-msgstr ""
+msgstr "Opuštění této sféry (realm) není podporováno"
 
 #: ../service/realm-kerberos.c:332 ../service/realm-kerberos.c:504
 msgid "Already running another action"
-msgstr ""
+msgstr "Už je spuštěná jiná akce"
 
 #: ../service/realm-kerberos.c:375
 #, c-format
 msgid "Already joined to another domain: %s"
-msgstr ""
+msgstr "Už připojeno do jiné domény: %s"
 
 #: ../service/realm-kerberos.c:446
 msgid "Failed to change permitted logins. See diagnostics."
-msgstr ""
+msgstr "Nepodařilo se změnit umožňovaná přihlášení. Viz diagnostika."
 
 #: ../service/realm-kerberos.c:747
 #, c-format
 msgid "The realm does not allow specifying logins"
-msgstr ""
+msgstr "Sféra (realm) neumožňuje zadávání uživatelských jmen"
 
 #: ../service/realm-kerberos.c:755
 #, c-format
 msgid "Invalid login argument%s%s%s does not match the login format."
 msgstr ""
+"Neplatný přihlašovací argument%s%s%s neodpovídající formát přihlašovacího "
+"jména."
 
 #: ../service/realm-packages.c:389
 #, c-format
 msgid "The following packages are not available for installation: %s"
-msgstr ""
+msgstr "Následující balíčky nejsou k dispozici pro instalaci: %s"
 
 #: ../service/realm-packages.c:471 ../service/realm-packages.c:508
 #, c-format
 msgid "Necessary packages are not installed: %s"
-msgstr ""
+msgstr "Nejsou nainstalované nezbytné balíčky: %s"
 
 #. * Various people have been worried by installing packages
 #. * quietly, so notify about what's going on.
@@ -213,36 +224,36 @@ msgstr ""
 #. * worried, remove realmd and do stuff manually.
 #: ../service/realm-packages.c:477 ../tools/realm-client.c:143
 msgid "Installing necessary packages"
-msgstr ""
+msgstr "Instalace nezbytných balíčků"
 
 #: ../service/realm-provider.c:161
 msgid "Failed to discover realm. See diagnostics."
-msgstr ""
+msgstr "Nepodařilo se objevit sféru (realm). Viz diagnostika."
 
 #: ../service/realm-samba.c:467
 #, c-format
 msgid "Not joined to this domain"
-msgstr ""
+msgstr "Nepřidáno do této domény"
 
 #: ../service/realm-samba.c:477 ../service/realm-samba.c:519
 #, c-format
 msgid "The Samba provider cannot restrict permitted logins."
-msgstr ""
+msgstr "Samba poskytovatel neumožňuje omezit umožněná přihlášení."
 
 #: ../service/realm-sssd.c:130
 #, c-format
 msgid "Invalid login argument '%s' contains unsupported characters."
-msgstr ""
+msgstr "Neplatný přihlašovací argument „%s“ obsahuje nepodporované znaky."
 
 #: ../service/realm-sssd-ad.c:126 ../service/realm-sssd-ipa.c:124
 #, c-format
 msgid "Enabling SSSD in nsswitch.conf and PAM failed."
-msgstr ""
+msgstr "Nepodařilo se zapnout SSSD v nsswitch.conf a PAM."
 
 #: ../service/realm-sssd-ad.c:240
 #, c-format
 msgid "Unable to automatically join the domain"
-msgstr ""
+msgstr "Nedaří se automaticky připojit do domény"
 
 #: ../service/realm-sssd-ad.c:326
 #, c-format
@@ -250,6 +261,8 @@ msgid ""
 "Joining a domain with a one time password is only supported with the '%s' "
 "membership software"
 msgstr ""
+"Přidání se do domény pomocí jednorázového hesla je podporováno pouze v "
+"případě členského software „%s“"
 
 #: ../service/realm-sssd-ad.c:340
 #, c-format
@@ -257,330 +270,341 @@ msgid ""
 "Joining a domain with a user password is only supported with the '%s' "
 "membership software"
 msgstr ""
+"Přidání se do domény pomocí hesla uživatele je podporováno pouze u "
+"členského software „%s“"
 
 #: ../service/realm-sssd-ad.c:356
 #, c-format
 msgid "Unsupported credentials for joining a domain"
-msgstr ""
+msgstr "Nepodporované přihlašovací údaje pro připojení do domény"
 
 #: ../service/realm-sssd-ad.c:398 ../service/realm-sssd-ipa.c:322
 #: ../tools/realm-join.c:236
 msgid "Already joined to this domain"
-msgstr ""
+msgstr "Do této domény už je připojeno"
 
 #: ../service/realm-sssd-ad.c:402 ../service/realm-sssd-ipa.c:326
 msgid "A domain with this name is already configured"
-msgstr ""
+msgstr "Doména s tímto názvem je už nastavená"
 
 #: ../service/realm-sssd-config.c:145
 #, c-format
 msgid "Already have domain %s in sssd.conf config file"
-msgstr ""
+msgstr "Doména %s už existuje v souboru s nastaveními sssd.conf"
 
 #: ../service/realm-sssd-config.c:190
 #, c-format
 msgid "Don't have domain %s in sssd.conf config file"
-msgstr ""
+msgstr "Doména %s neexistuje v souboru s nastaveními sssd.conf"
 
 #: ../service/realm-sssd-ipa.c:312
 msgid "The computer-ou argument is not supported when joining an IPA domain."
-msgstr ""
+msgstr "Při připojování do IPA domény není podporován argument computer-ou."
 
 #: ../service/realm-sssd-ipa.c:480
 msgid "Not currently joined to this realm"
-msgstr ""
+msgstr "Do této sféry (realm) nejste v tuto chvíli přidaní"
 
 #: ../tools/realm.c:40
 msgid "Discover available realm"
-msgstr ""
+msgstr "Objevit dostupnou sféru (realm)"
 
 #: ../tools/realm.c:41
 msgid "Enroll this machine in a realm"
-msgstr ""
+msgstr "Přidat tento stroj do sféry (realm)"
 
 #: ../tools/realm.c:42
 msgid "Unenroll this machine from a realm"
-msgstr ""
+msgstr "Zrušit členství tohoto stroje v doméně"
 
 #: ../tools/realm.c:43
 msgid "List known realms"
-msgstr ""
+msgstr "Vypsat známé sféry (realm)"
 
 #: ../tools/realm.c:44
 msgid "Permit user logins"
-msgstr ""
+msgstr "Umožnit přihlášení uživatelů"
 
 #: ../tools/realm.c:45
 msgid "Deny user logins"
-msgstr ""
+msgstr "Odepřít přihlášení uživatelů"
 
 #: ../tools/realm.c:184
 #, c-format
 msgid "Invalid value for %s option: %s"
-msgstr ""
+msgstr "Neplatná hodnota předvolby %s: %s"
 
 #: ../tools/realm.c:216
 msgid "Install mode to a specific prefix"
-msgstr ""
+msgstr "Režim instalace do zadané složky"
 
 #: ../tools/realm.c:217
 msgid "Verbose output"
-msgstr ""
+msgstr "Podrobnější výstup"
 
 #: ../tools/realm.c:218
 msgid "Do not prompt for input"
-msgstr ""
+msgstr "Nevyžadovat vstup"
 
 #: ../tools/realm-client.c:193 ../tools/realm-client.c:203
 msgid "Couldn't connect to realm service"
-msgstr ""
+msgstr "Nepodařilo se připojit ke službě realm"
 
 #: ../tools/realm-client.c:232
 msgid "Couldn't load the realm service"
-msgstr ""
+msgstr "Nepodařilo se načíst službu realm"
 
 #: ../tools/realm-client.c:249
 msgid "Couldn't connect to system bus"
-msgstr ""
+msgstr "Nepodařilo se připojit k (softwarové) sběrnici systému (D-Bus)"
 
 #: ../tools/realm-client.c:279
 #, c-format
 msgid "Couldn't create socket pair: %s"
-msgstr ""
+msgstr "Nepodařilo se vytvořit dvojici soketů: %s"
 
 #: ../tools/realm-client.c:287 ../tools/realm-client.c:319
 msgid "Couldn't create socket"
-msgstr ""
+msgstr "Nepodařilo se vytvořit soket"
 
 #: ../tools/realm-client.c:300
 msgid "Couldn't run realmd"
-msgstr ""
+msgstr "Nepodařilo se spustit realmd"
 
 #: ../tools/realm-client.c:565
 #, c-format
 msgid "Couldn't create runtime directory: %s: %s"
-msgstr ""
+msgstr "Nepodařilo se vytvořit pracovní složku: %s: %s"
 
 #: ../tools/realm-client.c:575
 #, c-format
 msgid "Couldn't create credential cache file: %s: %s"
 msgstr ""
+"Nepodařilo se vytvořit soubor s mezipamětí přihlašovacích údajů: %s: %s"
 
 #: ../tools/realm-client.c:585
 msgid "Couldn't resolve credential cache"
-msgstr ""
+msgstr "Nepodařilo se přeložit mezipaměť přihlašovacích údajů"
 
 #: ../tools/realm-client.c:675
 #, c-format
 msgid "Invalid password for %s"
-msgstr ""
+msgstr "Neplatné heslo pro %s"
 
 #: ../tools/realm-client.c:679
 #, c-format
 msgid "Couldn't authenticate as %s"
-msgstr ""
+msgstr "Nepodařilo se ověřit jako %s"
 
 #: ../tools/realm-client.c:704
 #, c-format
 msgid "Couldn't parse user name: %s"
-msgstr ""
+msgstr "Nepodařilo se zpracovat uživatelské jméno: %s"
 
 #: ../tools/realm-client.c:728
 msgid "Couldn't read credential cache"
-msgstr ""
+msgstr "Nepodařilo se načíst mezipaměť přihlašovacích údajů"
 
 #: ../tools/realm-client.c:754 ../tools/realm-client.c:961
 msgid "Couldn't initialize kerberos"
-msgstr ""
+msgstr "Nepodařilo se inicializovat kerberos"
 
 #: ../tools/realm-client.c:817
 #, c-format
 msgid "Cannot prompt for a password when running in unattended mode"
-msgstr ""
+msgstr "Při spuštění v bezobslužném režimu není možné vyžádat heslo"
 
 #: ../tools/realm-client.c:821
 #, c-format
 msgid "Password for %s: "
-msgstr ""
+msgstr "Heslo pro %s:"
 
 #: ../tools/realm-client.c:839
 #, c-format
 msgid "Couldn't prompt for password: %s"
-msgstr ""
+msgstr "Nepodařilo se dotázat na heslo: %s"
 
 #: ../tools/realm-client.c:874
 #, c-format
 msgid "Realm does not support membership using a password"
-msgstr ""
+msgstr "Sféra (realm) nepodporuje členství pomocí hesla"
 
 #: ../tools/realm-client.c:913
 #, c-format
 msgid "Realm does not support membership using a one time password"
-msgstr ""
+msgstr "Sféra (realm) nepodporuje členství pomocí jednorázového hesla"
 
 #: ../tools/realm-client.c:981
 msgid "Couldn't select kerberos credentials"
-msgstr ""
+msgstr "Nepodařilo se vybrat kerberos přihlašovací údaje"
 
 #: ../tools/realm-client.c:995
 msgid "Couldn't read kerberos credentials"
-msgstr ""
+msgstr "Nepodařilo se načíst kerberos přihlašovací údaje"
 
 #: ../tools/realm-client.c:1045
 #, c-format
 msgid "Realm does not support automatic membership"
-msgstr ""
+msgstr "Sféra (realm) nepodporuje automatické členství"
 
 #: ../tools/realm-discover.c:135
 msgid "Couldn't discover realms"
-msgstr ""
+msgstr "Nepodařilo se objevit sféry (realm)"
 
 #: ../tools/realm-discover.c:155
 msgid "No default realm discovered"
-msgstr ""
+msgstr "Nebyla objevena žádná výchozí sféra (realm)"
 
 #: ../tools/realm-discover.c:157
 #, c-format
 msgid "No such realm found: %s"
-msgstr ""
+msgstr "Nenalezena žádná taková sféra (realm): %s"
 
 #: ../tools/realm-discover.c:181
 msgid "Show all discovered realms"
-msgstr ""
+msgstr "Zobrazit všechny objevené sféry (realm)"
 
 #: ../tools/realm-discover.c:182 ../tools/realm-discover.c:273
 msgid "Show only the names"
-msgstr ""
+msgstr "Zobrazit pouze názvy"
 
 #: ../tools/realm-discover.c:183 ../tools/realm-join.c:287
 #: ../tools/realm-leave.c:266
 msgid "Use specific client software"
-msgstr ""
+msgstr "Použít konkrétní klientský software"
 
 #: ../tools/realm-discover.c:184 ../tools/realm-join.c:291
 msgid "Use specific membership software"
-msgstr ""
+msgstr "Použít konkrétní členský software"
 
 #: ../tools/realm-discover.c:185 ../tools/realm-join.c:289
 #: ../tools/realm-leave.c:269
 msgid "Use specific server software"
-msgstr ""
+msgstr "Použít konkrétní serverový software"
 
 #: ../tools/realm-discover.c:272
 msgid "Show all realms"
-msgstr ""
+msgstr "Zobrazit všechny sféry (realm)"
 
 #: ../tools/realm-join.c:92 ../tools/realm-join.c:132
 #: ../tools/realm-join.c:163
 msgid "Couldn't join realm"
-msgstr ""
+msgstr "Nepodařilo se přidat se do sféry (realm)"
 
 #: ../tools/realm-join.c:227
 msgid "Cannot join this realm"
-msgstr ""
+msgstr "Nedaří se přidat do této sféry (realm)"
 
 #: ../tools/realm-join.c:229
 msgid "No such realm found"
-msgstr ""
+msgstr "Nenalezena žádná taková sféra (realm)"
 
 #: ../tools/realm-join.c:283
 msgid "User name to use for enrollment"
-msgstr ""
+msgstr "Uživatelské jméno kterým se přidat"
 
 #: ../tools/realm-join.c:285
 msgid "Computer OU DN to join"
 msgstr ""
+"Rozlišený název (DN) organizační jednotky (OU) s účty počítačů, do které se "
+"připojit"
 
 #: ../tools/realm-join.c:293
 msgid "Join automatically without a password"
-msgstr ""
+msgstr "Přidat se automaticky, bez hesla"
 
 #: ../tools/realm-join.c:295
 msgid "Join using a preset one time password"
-msgstr ""
+msgstr "Přidat se pomocí přednastaveného jednorázového hesla"
 
 #: ../tools/realm-join.c:297
 msgid "Turn off automatic id mapping"
-msgstr ""
+msgstr "Vypnout automatické mapování identifikátorů"
 
 #: ../tools/realm-join.c:299
 msgid "Set the user principal for the computer account"
-msgstr ""
+msgstr "Nastavit uživatelský kerberos identifikátor pro účet počítače"
 
 #: ../tools/realm-join.c:319
 msgid "Specify one realm to join"
-msgstr ""
+msgstr "Zadejte jednu oblast (realm) do které se přidat"
 
 #: ../tools/realm-join.c:324
 msgid ""
 "The --no-password argument cannot be used with --one-time-password or --user"
 msgstr ""
+"Argument --no-password nelze použít zároveň s --one-time-password nebo --"
+"user"
 
 #: ../tools/realm-join.c:329
 msgid "The --one-time-password argument cannot be used with --user"
-msgstr ""
+msgstr "Argument --one-time-password nelze použít zároveň s --user"
 
 #: ../tools/realm-leave.c:181 ../tools/realm-leave.c:208
 msgid "Couldn't leave realm"
-msgstr ""
+msgstr "Nepodařilo se opustit sféru (realm)"
 
 #: ../tools/realm-leave.c:267
 msgid "Remove computer from realm"
-msgstr ""
+msgstr "Odebrat počítač ze sféry (realm)"
 
 #: ../tools/realm-leave.c:270
 msgid "User name to use for removal"
-msgstr ""
+msgstr "Uživatelské jméno kterým se odebrat"
 
 #: ../tools/realm-logins.c:129 ../tools/realm-logins.c:175
 msgid "Couldn't change permitted logins"
-msgstr ""
+msgstr "Nepodařilo se změnit umožněná přihlašování"
 
 #: ../tools/realm-logins.c:200
 msgid "Permit any realm account login"
-msgstr ""
+msgstr "Umožnit přihlášení libovolnému účtu ze sféry (realm)"
 
 #: ../tools/realm-logins.c:200
 msgid "Deny any realm account login"
-msgstr ""
+msgstr "Odepřít přihlášení všem účtúm z této sféry (realm)"
 
 #: ../tools/realm-logins.c:202
 msgid "Withdraw permit for a realm account to login"
-msgstr ""
+msgstr "Zrušit účtu ze sféry (realm) oprávnění se přihlášovat"
 
 #: ../tools/realm-logins.c:204
 msgid "Treat names as groups which to permit"
-msgstr ""
+msgstr "Považovat jména za skupiny kterým umožnit"
 
 #: ../tools/realm-logins.c:205
 msgid "Realm to permit/deny logins for"
-msgstr ""
+msgstr "Sféra (realm) ze které umožnit/odepřít přihlašování"
 
 #: ../tools/realm-logins.c:219
 msgid "No logins should be specified with -a or --all"
-msgstr ""
+msgstr "Žádná přihlášení by měla být určena pomocí -a nebo --all"
 
 #: ../tools/realm-logins.c:222
 msgid "The --withdraw or -x arguments cannot be used when denying logins"
-msgstr ""
+msgstr "Při odpírání přihlášení nelze použít argumenty --withdraw nebo -x"
 
 #: ../tools/realm-logins.c:225
 msgid "Specific logins must be specified with --withdraw"
 msgstr ""
+"V případě předvolby --withdraw je třeba zadat konkrétní přihlašovací jména"
 
 #: ../tools/realm-logins.c:228
 msgid "Groups may not be specified with -a or --all"
-msgstr ""
+msgstr "Při použití -a (nebo --all) už nezadávejte skupiny"
 
 #: ../tools/realm-logins.c:235
 msgid "Use --all to deny all logins"
-msgstr ""
+msgstr "Veškerá přihlášení odepřete pomocí --all"
 
 #: ../tools/realm-logins.c:237
 msgid "Specify specific users to add or remove from the permitted list"
 msgstr ""
+"Zadejte konkrétní uživatele které přidat nebo odebrat ze seznamu umožněných"
 
 #: ../tools/realm-logins.c:241
 msgid ""
 "Specifying deny without --all is deprecated. Use realm permit --withdraw"
 msgstr ""
+"Zadání odepření bez --all se už nepoužívá. Použijte příkaz: realm permit --"
+"withdraw"
