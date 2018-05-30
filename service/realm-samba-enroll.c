@@ -69,7 +69,7 @@ join_closure_free (gpointer data)
 	g_free (join);
 }
 
-static gchar *
+gchar *
 fallback_workgroup (const gchar *realm)
 {
 	const gchar *pos;

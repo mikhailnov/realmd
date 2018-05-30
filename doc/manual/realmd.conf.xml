@@ -192,6 +192,23 @@ automatic-install = no
 	</listitem>
 	</varlistentry>
 
+	<varlistentry>
+	<term><option>legacy-samba-config</option></term>
+	<listitem>
+		<para>Set this to <parameter>yes</parameter> to create a Samba
+		configuration file with id-mapping options used by Samba-3.5
+		and earlier version.</para>
+
+		<informalexample>
+<programlisting language="js">
+[service]
+legacy-samba-config = no
+# legacy-samba-config = yes
+</programlisting>
+		</informalexample>
+	</listitem>
+	</varlistentry>
+
 	</variablelist>
 </refsect1>
 

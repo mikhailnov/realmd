@@ -21,8 +21,10 @@
 #include "realm-options.h"
 #include "realm-samba-config.h"
 #include "realm-samba-winbind.h"
+#include "realm-samba-enroll.h"
 #include "realm-settings.h"
 #include "realm-service.h"
+#include "dbus/realm-dbus-constants.h"
 
 #include <glib/gstdio.h>
 
@@ -80,6 +82,10 @@ realm_samba_winbind_configure_async (RealmIniConfig *config,
 	RealmIniConfig *pwc;
 	GTask *task;
 	GError *error = NULL;
+	gchar *workgroup = NULL;
+	gchar *idmap_config_backend = NULL;
+	gchar *idmap_config_range = NULL;
+	gchar *idmap_config_schema_mode = NULL;
 
 	g_return_if_fail (config != NULL);
 	g_return_if_fail (invocation != NULL || G_IS_DBUS_METHOD_INVOCATION (invocation));
@@ -100,23 +106,54 @@ realm_samba_winbind_configure_async (RealmIniConfig *config,
 		                      "template shell", realm_settings_string ("users", "default-shell"),
 		                      NULL);
 
-		if (realm_options_automatic_mapping (options, domain_name)) {
-			realm_ini_config_set (config, REALM_SAMBA_CONFIG_GLOBAL,
-			                      "idmap uid", "10000-2000000",
-			                      "idmap gid", "10000-2000000",
-			                      "idmap backend", "tdb",
-			                      "idmap schema", NULL,
-			                      NULL);
+		if (realm_settings_boolean ("service", REALM_DBUS_OPTION_LEGACY_SMB_CONF, FALSE)) {
+			if (realm_options_automatic_mapping (options, domain_name)) {
+				realm_ini_config_set (config, REALM_SAMBA_CONFIG_GLOBAL,
+						      "idmap uid", "10000-2000000",
+						      "idmap gid", "10000-2000000",
+						      "idmap backend", "tdb",
+						      "idmap schema", NULL,
+						      NULL);
+			} else {
+				realm_ini_config_set (config, REALM_SAMBA_CONFIG_GLOBAL,
+						      "idmap uid", "500-4294967296",
+						      "idmap gid", "500-4294967296",
+						      "idmap backend", "ad",
+						      "idmap schema", "rfc2307",
+						      NULL);
+			}
 		} else {
-			realm_ini_config_set (config, REALM_SAMBA_CONFIG_GLOBAL,
-			                      "idmap uid", "500-4294967296",
-			                      "idmap gid", "500-4294967296",
-			                      "idmap backend", "ad",
-			                      "idmap schema", "rfc2307",
-			                      NULL);
+			workgroup = realm_ini_config_get (config, REALM_SAMBA_CONFIG_GLOBAL, "workgroup");
+			if (workgroup == NULL) {
+				workgroup = fallback_workgroup (domain_name);
+			}
+			idmap_config_backend = g_strdup_printf ("idmap config %s : backend", workgroup != NULL ? workgroup : "PLEASE_REPLACE");
+			idmap_config_range = g_strdup_printf ("idmap config %s : range", workgroup != NULL ? workgroup : "PLEASE_REPLACE");
+			idmap_config_schema_mode = g_strdup_printf ("idmap config %s : schema_mode", workgroup != NULL ? workgroup : "PLEASE_REPLACE");
+			g_free (workgroup);
+
+			if (realm_options_automatic_mapping (options, domain_name)) {
+				realm_ini_config_set (config, REALM_SAMBA_CONFIG_GLOBAL,
+						      "idmap config * : backend", "tdb",
+						      "idmap config * : range", "10000-999999",
+						      idmap_config_backend != NULL ? idmap_config_backend : "idmap config PLEASE_REPLACE : backend", "rid",
+						      idmap_config_range != NULL ? idmap_config_range: "idmap config PLEASE_REPLACE : range", "2000000-2999999",
+						      idmap_config_schema_mode != NULL ? idmap_config_schema_mode: "idmap config PLEASE_REPLACE : schema_mode", NULL,
+						      NULL);
+			} else {
+				realm_ini_config_set (config, REALM_SAMBA_CONFIG_GLOBAL,
+						      "idmap config * : backend", "tdb",
+						      "idmap config * : range", "10000000-10999999",
+						      idmap_config_backend != NULL ? idmap_config_backend : "idmap config PLEASE_REPLACE : backend", "ad",
+						      idmap_config_range != NULL ? idmap_config_range: "idmap config PLEASE_REPLACE : range", "500-999999",
+						      idmap_config_schema_mode != NULL ? idmap_config_schema_mode: "idmap config PLEASE_REPLACE : schema_mode", "rfc2307",
+						      NULL);
+			}
 		}
 
 		realm_ini_config_finish_change (config, &error);
+		g_free (idmap_config_backend);
+		g_free (idmap_config_range);
 	}
 
 	/* Setup pam_winbind.conf with decent defaults matching our expectations */

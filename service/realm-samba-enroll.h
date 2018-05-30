@@ -46,6 +46,9 @@ void               realm_samba_enroll_leave_async          (RealmDisco *disco,
 gboolean           realm_samba_enroll_leave_finish         (GAsyncResult *result,
                                                             GError **error);
 
+gchar *
+fallback_workgroup (const gchar *realm);
+
 G_END_DECLS
 
 #endif /* __REALM_SAMBA_ENROLL_H__ */
