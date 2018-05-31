@@ -1130,3 +1130,67 @@ realm_kerberos_flush_keytab (const gchar *realm_name,
 	return ret;
 
 }
+
+gchar *
+realm_kerberos_get_netbios_name_from_keytab (const gchar *realm_name)
+{
+	krb5_error_code code;
+	krb5_keytab keytab = NULL;
+	krb5_context ctx;
+	krb5_kt_cursor cursor = NULL;
+	krb5_keytab_entry entry;
+	krb5_principal realm_princ = NULL;
+	gchar *princ_name = NULL;
+	gchar *netbios_name = NULL;
+	krb5_data *name_data;
+
+	code = krb5_init_context (&ctx);
+	if (code != 0) {
+		return NULL;
+	}
+
+	princ_name = g_strdup_printf ("user@%s", realm_name);
+	code = krb5_parse_name (ctx, princ_name, &realm_princ);
+	g_free (princ_name);
+
+	if (code == 0) {
+		code = krb5_kt_default (ctx, &keytab);
+	}
+
+	if (code == 0) {
+		code = krb5_kt_start_seq_get (ctx, keytab, &cursor);
+	}
+
+	if (code == 0) {
+		while (!krb5_kt_next_entry (ctx, keytab, &entry, &cursor) && netbios_name == NULL) {
+			if (krb5_realm_compare (ctx, realm_princ, entry.principal)) {
+				name_data = krb5_princ_component (ctx, entry.principal, 0);
+				if (name_data != NULL
+				                && name_data->length > 0
+				                && name_data->data[name_data->length - 1] == '$') {
+					netbios_name = g_strndup (name_data->data, name_data->length - 1);
+					if (netbios_name == NULL) {
+						code = krb5_kt_free_entry (ctx, &entry);
+						warn_if_krb5_failed (ctx, code);
+						break;
+					}
+				}
+			}
+			code = krb5_kt_free_entry (ctx, &entry);
+			warn_if_krb5_failed (ctx, code);
+		}
+	}
+
+	code = krb5_kt_end_seq_get (ctx, keytab, &cursor);
+	warn_if_krb5_failed (ctx, code);
+
+	code = krb5_kt_close (ctx, keytab);
+	warn_if_krb5_failed (ctx, code);
+
+	krb5_free_principal (ctx, realm_princ);
+
+	krb5_free_context (ctx);
+
+	return netbios_name;
+
+}

@@ -85,7 +85,8 @@ static JoinClosure *
 join_closure_init (GTask *task,
                    RealmDisco *disco,
                    GVariant *options,
-                   GDBusMethodInvocation *invocation)
+                   GDBusMethodInvocation *invocation,
+                   gboolean do_join)
 {
 	JoinClosure *join;
 	gchar *workgroup;
@@ -93,6 +94,7 @@ join_closure_init (GTask *task,
 	int temp_fd;
 	const gchar *explicit_computer_name = NULL;
 	const gchar *authid = NULL;
+	gchar *name_from_keytab = NULL;
 
 	join = g_new0 (JoinClosure, 1);
 	join->disco = realm_disco_ref (disco);
@@ -105,6 +107,14 @@ join_closure_init (GTask *task,
 		authid = explicit_computer_name;
 	else if (disco->explicit_netbios)
 		authid = disco->explicit_netbios;
+
+	/* try to get the NetBIOS name from the keytab while leaving the domain */
+	if (explicit_computer_name == NULL && !do_join) {
+		name_from_keytab = realm_kerberos_get_netbios_name_from_keytab(disco->kerberos_realm);
+		if (name_from_keytab != NULL) {
+			authid = name_from_keytab;
+		}
+	}
 
 	join->config = realm_ini_config_new (REALM_INI_NO_WATCH | REALM_INI_PRIVATE);
 	realm_ini_config_set (join->config, REALM_SAMBA_CONFIG_GLOBAL,
@@ -151,6 +161,7 @@ join_closure_init (GTask *task,
 		g_warning ("Couldn't create temp file in: %s", g_get_tmp_dir ());
 	}
 
+	g_free (name_from_keytab);
 	return join;
 }
 
@@ -393,7 +404,7 @@ realm_samba_enroll_join_async (RealmDisco *disco,
 	g_return_if_fail (cred != NULL);
 
 	task = g_task_new (NULL, NULL, callback, user_data);
-	join = join_closure_init (task, disco, options, invocation);
+	join = join_closure_init (task, disco, options, invocation, TRUE);
 	explicit_computer_name = realm_options_computer_name (options, disco->domain_name);
 	if (explicit_computer_name != NULL) {
 		realm_diagnostics_info (invocation, "Joining using a manual netbios name: %s",
@@ -462,7 +473,7 @@ realm_samba_enroll_leave_async (RealmDisco *disco,
 	JoinClosure *join;
 
 	task = g_task_new (NULL, NULL, callback, user_data);
-	join = join_closure_init (task, disco, options, invocation);
+	join = join_closure_init (task, disco, options, invocation, FALSE);
 
 	switch (cred->type) {
 	case REALM_CREDENTIAL_PASSWORD:

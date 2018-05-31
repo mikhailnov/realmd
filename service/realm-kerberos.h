@@ -88,6 +88,8 @@ gchar *             realm_kerberos_format_login          (RealmKerberos *self,
 gboolean            realm_kerberos_flush_keytab                (const gchar *realm_name,
                                                                 GError **error);
 
+gchar *             realm_kerberos_get_netbios_name_from_keytab (const gchar *realm_name);
+
 const gchar *       realm_kerberos_get_name                    (RealmKerberos *self);
 
 const gchar *       realm_kerberos_get_realm_name              (RealmKerberos *self);
