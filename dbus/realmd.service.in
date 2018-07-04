@@ -1,6 +1,6 @@
 [Unit]
 Description=Realm and Domain Configuration
-Documentation=man:realmd(8)
+Documentation=man:realm(8) man:realmd.conf(5)
 
 [Service]
 Type=dbus
