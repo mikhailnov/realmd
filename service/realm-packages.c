@@ -567,7 +567,7 @@ lookup_required_files_and_packages (const gchar **package_sets,
 		g_ptr_array_add (packages, NULL);
 		*result_packages = (gchar **)g_ptr_array_free (packages, FALSE);
 	} else {
-		g_ptr_array_free (files, TRUE);
+		g_ptr_array_free (packages, TRUE);
 	}
 
 	if (result_files) {

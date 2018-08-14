@@ -980,7 +980,10 @@ realm_kerberos_set_details (RealmKerberos *self,
 		if (name == NULL)
 			break;
 		value = va_arg (va, const gchar *);
-		g_return_if_fail (value != NULL);
+		if (value == NULL) {
+			va_end (va);
+			g_return_if_reached ();
+		}
 
 		values[0] = g_variant_new_string (name);
 		values[1] = g_variant_new_string (value);
