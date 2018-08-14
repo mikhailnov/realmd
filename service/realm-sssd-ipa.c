@@ -201,7 +201,7 @@ on_ipa_client_do_restart (GObject *source,
 
 		realm_sssd_config_update_domain (config, domain, &error,
 		                                 "cache_credentials", "True",
-		                                 "use_fully_qualified_names", realm_options_qualify_names (domain) ? "True" : "False",
+		                                 "use_fully_qualified_names", realm_options_qualify_names (domain, FALSE) ? "True" : "False",
 		                                 "krb5_store_password_if_offline", "True",
 		                                 "default_shell", shell,
 		                                 "fallback_homedir", home,

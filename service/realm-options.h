@@ -37,7 +37,8 @@ const gchar *  realm_options_user_principal           (GVariant *options,
 gboolean       realm_options_automatic_mapping        (GVariant *options,
 						       const gchar *realm_name);
 
-gboolean       realm_options_qualify_names            (const gchar *realm_name);
+gboolean       realm_options_qualify_names            (const gchar *realm_name,
+                                                       gboolean def);
 
 gboolean       realm_options_check_domain_name        (const gchar *domain_name);
 

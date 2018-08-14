@@ -102,7 +102,7 @@ realm_samba_winbind_configure_async (RealmIniConfig *config,
 		                      "winbind enum groups", "no",
 		                      "winbind offline logon", "yes",
 		                      "winbind refresh tickets", "yes",
-		                      "winbind use default domain", realm_options_qualify_names (domain_name )? "no" : "yes",
+		                      "winbind use default domain", realm_options_qualify_names (domain_name, TRUE )? "no" : "yes",
 		                      "template shell", realm_settings_string ("users", "default-shell"),
 		                      NULL);
 

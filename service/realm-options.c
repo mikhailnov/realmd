@@ -98,7 +98,7 @@ realm_options_automatic_mapping (GVariant *options,
 
 	if (realm_name && !option) {
 		section = g_utf8_casefold (realm_name, -1);
-		mapping = realm_settings_boolean (realm_name, REALM_DBUS_OPTION_AUTOMATIC_ID_MAPPING, TRUE);
+		mapping = realm_settings_boolean (section, REALM_DBUS_OPTION_AUTOMATIC_ID_MAPPING, TRUE);
 		g_free (section);
 	}
 
@@ -112,20 +112,21 @@ realm_options_automatic_join (const gchar *realm_name)
 	gboolean mapping;
 
 	section = g_utf8_casefold (realm_name, -1);
-	mapping = realm_settings_boolean (realm_name, "automatic-join", FALSE);
+	mapping = realm_settings_boolean (section, "automatic-join", FALSE);
 	g_free (section);
 
 	return mapping;
 }
 
 gboolean
-realm_options_qualify_names (const gchar *realm_name)
+realm_options_qualify_names (const gchar *realm_name,
+                             gboolean def)
 {
 	gchar *section;
 	gboolean qualify;
 
 	section = g_utf8_casefold (realm_name, -1);
-	qualify = realm_settings_boolean (realm_name, "fully-qualified-names", TRUE);
+	qualify = realm_settings_boolean (section, "fully-qualified-names", def);
 	g_free (section);
 
 	return qualify;

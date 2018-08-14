@@ -172,7 +172,7 @@ configure_sssd_for_domain (RealmIniConfig *config,
 	gchar *home;
 
 	home = realm_sssd_build_default_home (realm_settings_string ("users", "default-home"));
-	qualify = realm_options_qualify_names (disco->domain_name);
+	qualify = realm_options_qualify_names (disco->domain_name, TRUE);
 	shell = realm_settings_string ("users", "default-shell");
 	explicit_computer_name = realm_options_computer_name (options, disco->domain_name);
 	realmd_tags = g_string_new ("");
