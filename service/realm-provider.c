@@ -28,6 +28,8 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
+#include <errno.h>
+
 #define TIMEOUT_SECONDS 15
 
 G_DEFINE_TYPE (RealmProvider, realm_provider, G_TYPE_DBUS_OBJECT_SKELETON);
@@ -181,6 +183,25 @@ on_discover_complete (GObject *source,
 	return_discover_result (method, realms, relevance, error);
 }
 
+static gchar *
+get_domain_from_hostname (void)
+{
+	gchar hostname[HOST_NAME_MAX + 1];
+	gchar *dot;
+
+	if (gethostname (hostname, sizeof (hostname)) < 0) {
+		g_warning ("Couldn't get the computer host name: %s", g_strerror (errno));
+		return NULL;
+	}
+
+	dot = strchr (hostname, '.');
+	if (dot != NULL) {
+		return g_strdup (dot + 1);
+	}
+
+	return NULL;
+}
+
 static void
 on_discover_default (GObject *source,
                      GAsyncResult *result,
@@ -193,6 +214,10 @@ on_discover_default (GObject *source,
 	if (error != NULL) {
 		realm_diagnostics_error (method->invocation, error, "Couldn't get default domain from DHCP");
 		g_clear_error (&error);
+	}
+
+	if (method->string == NULL) {
+		method->string = get_domain_from_hostname ();
 	}
 
 	if (method->string) {
@@ -210,7 +235,8 @@ on_discover_default (GObject *source,
 		                         on_discover_complete, method);
 
 	} else {
-		realm_diagnostics_info (method->invocation, "No default domain received via DHCP");
+		realm_diagnostics_info (method->invocation,
+		                        "No default domain received via DHCP or given by hostname");
 		return_discover_result (method, NULL, 0, NULL);
 	}
 }
