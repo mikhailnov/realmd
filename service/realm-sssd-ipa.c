@@ -110,40 +110,18 @@ enroll_closure_free (gpointer data)
 }
 
 static void
-on_enable_nss_done (GObject *source,
-                    GAsyncResult *result,
-                    gpointer user_data)
-{
-	GTask *task = G_TASK (user_data);
-	GError *error = NULL;
-	gint status;
-
-	status = realm_command_run_finish (result, NULL, &error);
-	if (error == NULL && status != 0)
-		g_set_error (&error, REALM_ERROR, REALM_ERROR_INTERNAL,
-		             _("Enabling SSSD in nsswitch.conf and PAM failed."));
-	if (error != NULL)
-		g_task_return_error (task, error);
-	else
-		g_task_return_boolean (task, TRUE);
-	g_object_unref (task);
-}
-
-static void
 on_restart_done (GObject *source,
                  GAsyncResult *result,
                  gpointer user_data)
 {
 	GTask *task = G_TASK (user_data);
-	EnrollClosure *enroll = g_task_get_task_data (task);
 	RealmSssd *sssd = g_task_get_source_object (task);
 	GError *error = NULL;
 
 	realm_service_enable_and_restart_finish (result, &error);
 	if (error == NULL) {
 		realm_sssd_update_properties (sssd);
-		realm_command_run_known_async ("sssd-enable-logins", NULL, enroll->invocation,
-		                               on_enable_nss_done, g_object_ref (task));
+		g_task_return_boolean (task, TRUE);
 	} else {
 		g_task_return_error (task, error);
 	}
