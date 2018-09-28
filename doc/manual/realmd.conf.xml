@@ -28,7 +28,7 @@
 	<refpurpose>Tweak behavior of realmd</refpurpose>
 </refnamediv>
 
-<refsect1>
+<refsect1 id="realmd-conf-file">
 	<title>Configuration File</title>
 
 	<para><command>realmd</command> can be tweaked by network administrators
@@ -297,7 +297,7 @@ DOMAIN\user:*:13445:13446:Name:/home/DOMAIN/user:/bin/bash
 
 </refsect1>
 
-<refsect1>
+<refsect1 id="realmd-conf-specific-settings">
 	<title>Realm specific settings</title>
 	<para>These options should go in an section with the same name
 	as the realm in the <filename>/etc/realmd.conf</filename> file.

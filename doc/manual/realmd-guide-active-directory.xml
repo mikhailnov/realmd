@@ -69,7 +69,7 @@ $ <command>realm discover --verbose domain.example.com</command>
 		<ulink url="http://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/winbind.html">Winbind</ulink>.
 		By default SSSD is used.</para>
 
-		<section>
+		<section id="using-sssd-with-active-directory">
 			<title>Using SSSD with Active Directory</title>
 			<para><ulink url="https://fedorahosted.org/sssd/">SSSD</ulink>
 			provides client software for various kerberos and/or LDAP
@@ -91,7 +91,7 @@ $ <command>realm join --client-software=sssd domain.example.com</command>
 			</informalexample>
 		</section>
 
-		<section>
+		<section id="using-winbind-with-active-directory">
 			<title>Using Winbind with Active Directory</title>
 			<para>Samba
 			<ulink url="http://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/winbind.html">Winbind</ulink>

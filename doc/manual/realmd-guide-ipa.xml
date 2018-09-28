@@ -13,7 +13,7 @@
 	users locally, and log into the local machine with IPA domain
 	credentials.</para>
 
-	<section>
+	<section id="discovering-ipa-domains">
 		<title>Discovering IPA domains</title>
 		<para><command>realmd</command> discovers which domains or
 		realms it can use or configure. It can discover and identify

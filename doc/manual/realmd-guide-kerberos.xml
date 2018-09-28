@@ -12,7 +12,7 @@
 	Since there is no standard way to enroll a computer against a Kerberos
 	server, it is not possible to do this with <command>realmd</command>.</para>
 
-	<section>
+	<section id="discovering-kerberos-realms">
 		<title>Discovering Kerberos realms</title>
 		<para><command>realmd</command> discovers which domains or
 		realms it can use or configure. It can discover and identify

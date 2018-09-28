@@ -49,7 +49,7 @@
 	</cmdsynopsis>
 </refsynopsisdiv>
 
-<refsect1>
+<refsect1 id="man-description">
 	<title>Description</title>
 	<para><command>realm</command> is a command line tool that
 	can be used to manage enrollment in kerberos realms, like Active
@@ -81,7 +81,7 @@
 
 </refsect1>
 
-<refsect1>
+<refsect1 id="man-discover">
 	<title>Discover</title>
 
 	<para>Discover a realm and its capabilities.</para>
@@ -138,7 +138,7 @@ $ realm discover domain.example.com
 
 </refsect1>
 
-<refsect1>
+<refsect1 id="man-join">
 	<title>Join</title>
 
 	<para>Configure the local machine for use with a realm.</para>
@@ -263,7 +263,7 @@ $ realm join --user=admin --computer-ou=OU=Special domain.example.com
 
 </refsect1>
 
-<refsect1>
+<refsect1 id="man-leave">
 	<title>Leave</title>
 
 	<para>Deconfigure the local machine for use with a realm.</para>
@@ -313,7 +313,7 @@ $ realm leave domain.example.com
 
 </refsect1>
 
-<refsect1>
+<refsect1 id="man-list">
 	<title>List</title>
 
 	<para>List all the discovered and configured realms.</para>
@@ -345,7 +345,7 @@ $ realm list
 	</variablelist>
 </refsect1>
 
-<refsect1>
+<refsect1 id="man-permit">
 	<title>Permit</title>
 
 	<para>Permit local login by users of the realm.</para>
@@ -392,7 +392,7 @@ $ realm permit --withdraw user@example.com
 
 </refsect1>
 
-<refsect1>
+<refsect1 id="man-deny">
 	<title>Deny</title>
 
 	<para>Deny local login by realm accounts.</para>
