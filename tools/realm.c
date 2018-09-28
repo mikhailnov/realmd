@@ -52,8 +52,6 @@ realm_print_error (const gchar *format,
 	GString *message;
 	va_list va;
 
-	va_start (va, format);
-
 	message = g_string_new ("");
 	g_string_append_printf (message, "%s: ", g_get_prgname ());
 
