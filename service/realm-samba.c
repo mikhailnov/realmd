@@ -180,7 +180,6 @@ on_join_do_winbind (GObject *source,
 	GTask *task = G_TASK (user_data);
 	EnrollClosure *enroll = g_task_get_task_data (task);
 	RealmSamba *self = g_task_get_source_object (task);
-	GHashTable *settings = NULL;
 	GError *error = NULL;
 	const gchar *name;
 	const gchar *computer_name;
@@ -215,8 +214,6 @@ on_join_do_winbind (GObject *source,
 		g_task_return_error (task, error);
 	}
 
-	if (settings)
-		g_hash_table_unref (settings);
 	g_object_unref (task);
 }
 
