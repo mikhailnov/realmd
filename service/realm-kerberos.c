@@ -720,7 +720,7 @@ realm_kerberos_get_disco (RealmKerberos *self)
 		if (!disco->kerberos_realm)
 			disco->kerberos_realm = g_strdup (realm_kerberos_get_realm_name (self));
 		klass = REALM_KERBEROS_GET_CLASS (self);
-		if (klass->discover_myself)
+		if (klass && klass->discover_myself)
 			(klass->discover_myself) (self, disco);
 		self->pv->disco = disco;
 	}

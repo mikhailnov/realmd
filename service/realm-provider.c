@@ -450,7 +450,7 @@ realm_provider_get_realms (RealmProvider *self)
 
 	g_return_val_if_fail (REALM_IS_PROVIDER (self), NULL);
 	klass = REALM_PROVIDER_GET_CLASS (self);
-	g_return_val_if_fail (klass->get_realms != NULL, NULL);
+	g_return_val_if_fail (klass != NULL && klass->get_realms != NULL, NULL);
 
 	return (klass->get_realms) (self);
 }
