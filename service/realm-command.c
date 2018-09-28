@@ -361,6 +361,7 @@ on_unix_process_child_setup (gpointer user_data)
 	int *child_fds = user_data;
 	long val;
 	guint i;
+	int ret;
 
 	/*
 	 * Become a process leader in order to close the controlling terminal.
@@ -378,7 +379,10 @@ on_unix_process_child_setup (gpointer user_data)
 	for (i = 0; i < NUM_FDS; i++) {
 		if (child_fds[i] >= 0) {
 			val = fcntl (child_fds[i], F_GETFD);
-			fcntl (child_fds[i], F_SETFD, val & ~FD_CLOEXEC);
+			ret = fcntl (child_fds[i], F_SETFD, val & ~FD_CLOEXEC);
+			if (ret != 0) {
+				/* ignore */
+			}
 		}
 	}
 }
