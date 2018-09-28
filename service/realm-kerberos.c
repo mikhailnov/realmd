@@ -251,6 +251,7 @@ is_credential_supported (RealmKerberosMembershipIface *iface,
 	gboolean found = FALSE;
 	gint i;
 
+	g_assert (iface != NULL);
 	g_assert (iface->join_creds != NULL);
 	g_assert (iface->leave_creds != NULL);
 
