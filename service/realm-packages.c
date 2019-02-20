@@ -343,6 +343,7 @@ packages_resolve_async (GDBusConnection *connection,
                         gpointer user_data)
 {
 	guint64 flags = 1 << 18 /* PK_FILTER_ENUM_ARCH */;
+	flags |= 1 << 16 /* PK_FILTER_ENUM_NEWEST */;
 	package_transaction_create ("Resolve", g_variant_new ("(t^as)", flags, package_names),
 	                            connection, cancellable, callback, user_data);
 }
