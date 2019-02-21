@@ -163,12 +163,49 @@ test_add_domain_only (Test *test,
 	g_free (output);
 }
 
+static void check_for_test_update_domain (char *new)
+{
+	char *token;
+	char *saveptr;
+	size_t c;
+	int result = 0;
+
+	token = strtok_r (new, "\n", &saveptr);
+	g_assert_nonnull (token);
+	g_assert_cmpstr (token, ==, "[domain/one]");
+
+	for (c = 0; c < 3; c++) {
+		token = strtok_r (NULL, "\n", &saveptr);
+		g_assert_nonnull (token);
+		if (strcmp (token, "val=1") == 0) {
+			result += 1;
+		} else if (strcmp (token, "uno = 1") == 0) {
+			result += 2;
+		} else if (strcmp (token, "eins = one") == 0) {
+			result += 4;
+		} else {
+			g_assert_not_reached ();
+		}
+	}
+	g_assert_cmpint (result, ==, 7);
+
+	token = strtok_r (NULL, "\n", &saveptr);
+	g_assert_nonnull (token);
+	g_assert_cmpstr (token, ==, "[sssd]");
+
+	token = strtok_r (NULL, "\n", &saveptr);
+	g_assert_nonnull (token);
+	g_assert_cmpstr (token, ==, "domains=one");
+
+	token = strtok_r (NULL, "\n", &saveptr);
+	g_assert_null (token);
+}
+
 static void
 test_update_domain (Test *test,
                     gconstpointer unused)
 {
 	const gchar *data = "[domain/one]\nval=1\n[sssd]\ndomains=one";
-	const gchar *check = "[domain/one]\nval=1\nuno = 1\neins = one\n[sssd]\ndomains=one";
 	GError *error = NULL;
 	gchar *output;
 	gboolean ret;
@@ -190,7 +227,7 @@ test_update_domain (Test *test,
 	g_assert_no_error (error);
 	g_assert (ret == TRUE);
 
-	g_assert_cmpstr (check, ==, output);
+	check_for_test_update_domain (output);
 	g_free (output);
 }
 
